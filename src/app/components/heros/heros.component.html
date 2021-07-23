@@ -1,4 +1,17 @@
-<p>heros works!</p>
-<li *ngFor = "let hero of listOfHeros">
-    <span>{{hero.name}}</span>
-</li>
+<strong>To Do</strong>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let work of listOfToDos">
+            <td>{{work.id}}</td>
+            <td>{{work.title}}</td>
+            <td>{{work.completed ? 'completed' : 'pending'}}</td>
+        </tr>
+    </tbody>
+</table>
