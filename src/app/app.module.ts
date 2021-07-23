@@ -1,15 +1,33 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HerosComponent } from './components/heros/heros.component';
 import { WorkComponent } from './components/work/work.component';
+import { NoAccessComponent } from './components/no-access/no-access.component';
+import { AdminGuardService } from './services/Auth/admin-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/work', pathMatch: 'full' },
-  { path: 'work', component: WorkComponent },
-  { path: 'heroes', component: HerosComponent }
+  {
+    path: '',
+    redirectTo: '/work',
+    pathMatch: 'full'
+  },
+  {
+    path: 'work',
+    component: WorkComponent
+  },
+  {
+    path: 'heroes',
+    component: HerosComponent,
+    canActivate: [AdminGuardService]
+  },
+  {
+    path: 'no-access',
+    component: NoAccessComponent
+  }
 ];
 
 @NgModule({
@@ -19,8 +37,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
-
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
