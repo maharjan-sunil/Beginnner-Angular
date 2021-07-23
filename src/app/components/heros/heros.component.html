@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
     <p>{{department}}</p><br>
     <!-- 2 waybinding -->
@@ -67,3 +68,22 @@
 
     <button type="submit" [disabled]="!userForm.valid">Add</button>
 </form>
+=======
+<strong>To Do</strong>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let work of listOfToDos">
+            <td>{{work.id}}</td>
+            <td>{{work.title}}</td>
+            <td>{{work.completed ? 'completed' : 'pending'}}</td>
+        </tr>
+    </tbody>
+</table>
+>>>>>>> 5cdedec44ae2fd7bbc50789c6aedadd0db086cc1

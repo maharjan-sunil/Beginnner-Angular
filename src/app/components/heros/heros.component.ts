@@ -34,9 +34,11 @@ export class HerosComponent implements OnInit {
 
   constructor(private hero: HerosService,
     private fb: FormBuilder) { }
+  listOfToDos: any;
 
   ngOnInit(): void {
-    this.listOfHeros = this.hero.getListOfHeros();
+    this.hero.getListOfToDos()
+      .subscribe(response => this.listOfToDos = response);
   }
 
   updateViaSet() {
