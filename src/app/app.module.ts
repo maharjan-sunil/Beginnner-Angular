@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -37,6 +38,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule
   ],

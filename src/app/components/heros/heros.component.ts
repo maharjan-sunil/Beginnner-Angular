@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { HerosService } from '../../services/heros/heros.service';
+import { ageValidator } from '../../custom/age';
 
 @Component({
   selector: 'app-heros',
@@ -9,13 +11,53 @@ import { HerosService } from '../../services/heros/heros.service';
 })
 export class HerosComponent implements OnInit {
 
-  listOfToDos: any;
+  listOfHeros: any;
+  heroName: any;
+  department: any;
 
-  constructor(private hero: HerosService) { }
+  // userForm = new FormGroup({
+  //   name: new FormControl(''),
+  //   address: new FormControl(''),
+
+  // })
+
+  // using form builder
+  userForm = this.fb.group({
+    name: ['', Validators.required],
+    age: [null, [Validators.required, ageValidator]],
+    address: [''],
+    family: this.fb.group({
+      father: [''],
+      mother: ['']
+    })
+  })
+
+  constructor(private hero: HerosService,
+    private fb: FormBuilder) { }
+  listOfToDos: any;
 
   ngOnInit(): void {
     this.hero.getListOfToDos()
       .subscribe(response => this.listOfToDos = response);
   }
 
+  updateViaSet() {
+    //setValue() update individual formControl
+    this.department.setValue('kalimati');
+  }
+
+  updateViaPatch() {
+    //patchValue() update form Group
+    this.userForm.patchValue({
+      address: 'kalimati'
+    });
+  }
+
+  get userFormControl() {
+    return this.userForm.controls;
+  }
+
+  onSubmit() {
+    console.log(this.userForm.value);
+  }
 }

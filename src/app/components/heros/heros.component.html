@@ -1,3 +1,74 @@
+<<<<<<< HEAD
+<div>
+    <p>{{department}}</p><br>
+    <!-- 2 waybinding -->
+    <input type="text" [(ngModel)]="department" name="department" id="department">
+</div>
+
+<strong>List of Heros</strong>
+<li *ngFor="let hero of listOfHeros">
+    <span>{{hero.name}}</span>
+</li>
+
+<!-- Reactive Form -->
+<!-- individual input -->
+<!-- <input type="text" [formControl]="name"> -->
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <input type="text" id="name" class="form-control" formControlName="name" required>
+
+    <div *ngIf="userFormControl.name.invalid && (userFormControl.name.dirty || userFormControl.name.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="userFormControl.name.errors?.required">
+            Name is required.
+        </div>
+        <!-- <div *ngIf="name.errors?.minlength">
+            Name must be at least 4 characters long.
+        </div>
+        <div *ngIf="name.errors?.forbiddenName">
+            Name cannot be Bob.
+        </div> -->
+    </div>
+    <input type="text" id="address" class="form-control" formControlName="address" required>
+
+    <div *ngIf="userFormControl.address.invalid && (userFormControl.address.dirty || userFormControl.address.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="userFormControl.address.errors?.required">
+            Address is required.
+        </div>
+        <div *ngIf="userFormControl.address.errors?.minlength">
+            Address must be at least 4 characters long.
+        </div>
+        <!--<div *ngIf="name.errors?.forbiddenName">
+            Name cannot be Bob.
+        </div> -->
+    </div>
+
+    <input type="text" id="age" class="form-control" formControlName="age" required>
+
+    <div *ngIf="userFormControl.age.invalid && (userFormControl.age.dirty || userFormControl.age.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="userFormControl.age.errors?.required">
+            Age is required.
+        </div>
+        <div *ngIf="userFormControl.age.errors?.ageValidator">
+            age custom error
+        </div>
+        <!--<div *ngIf="name.errors?.forbiddenName">
+            Name cannot be Bob.
+        </div> -->
+    </div>
+
+
+    <button (click)="updateViaSet()">Set</button>
+    <button (click)="updateViaPatch()">Patch</button><br>
+
+    <button type="submit" [disabled]="!userForm.valid">Add</button>
+</form>
+=======
 <strong>To Do</strong>
 <table>
     <thead>
@@ -15,3 +86,4 @@
         </tr>
     </tbody>
 </table>
+>>>>>>> 5cdedec44ae2fd7bbc50789c6aedadd0db086cc1
